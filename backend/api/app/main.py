@@ -2,7 +2,12 @@ from fastapi import FastAPI
 
 from app.routers import auth, rooms
 from app.database import engine
-from app.models import user
+
+from app.models import user, room
+from app.database import engine
+
+
+user.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="inhouse.gg API",
