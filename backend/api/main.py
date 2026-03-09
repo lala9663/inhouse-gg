@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from routers import auth, rooms
 
 app = FastAPI(
     title="inhouse.gg API",
@@ -6,16 +7,10 @@ app = FastAPI(
     version="0.1.0"
 )
 
+app.include_router(auth.router)
+app.include_router(rooms.router)
+
 
 @app.get("/")
 def root():
-    return {
-        "message": "Welcome to inhouse.gg API"
-    }
-
-
-@app.get("/health")
-def health():
-    return {
-        "status": "ok"
-    }
+    return {"message": "Welcome to inhouse.gg"}
