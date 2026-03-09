@@ -10,6 +10,12 @@ app = FastAPI(
 app.include_router(auth.router)
 app.include_router(rooms.router)
 
+# 테이블 생성
+user.Base.metadata.create_all(bind=engine)
+
+app.include_router(auth.router)
+app.include_router(rooms.router)
+
 
 @app.get("/")
 def root():
