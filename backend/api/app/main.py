@@ -1,5 +1,8 @@
 from fastapi import FastAPI
-from routers import auth, rooms
+
+from app.routers import auth, rooms
+from app.database import engine
+from app.models import user
 
 app = FastAPI(
     title="inhouse.gg API",
